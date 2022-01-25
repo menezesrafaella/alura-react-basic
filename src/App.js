@@ -14,6 +14,7 @@ class App extends Component {
       notes: []
     }
   }
+
   createNote(title,text){ 
     const newNote = {title, text}
     const newArrayNotes = [...this.state.notes, newNote]
@@ -22,11 +23,18 @@ class App extends Component {
     }
     this.setState(newState)
  }
+
+ deleteNote(index) {
+   let arrayNotes = this.state.notes;
+   arrayNotes.splice(index, 1)
+   this.setState({notes:arrayNotes})
+ }
+
   render() {
     return (
       <section className="conteudo">
         <FormularioCadastro createNote={this.createNote.bind(this)}/>
-        <ListaDeNotas notes={this.state.notes}/>
+        <ListaDeNotas className="anime-left" notes={this.state.notes} removeNote={this.deleteNote.bind(this)}/>
       </section>
     );
   }
