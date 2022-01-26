@@ -5,13 +5,15 @@ import ListaDeNotas from "./components/ListaDeNotas/ListaDeNotas";
 
 import "./assets/App.css";
 import './assets/reset.css';
+import ListaDeCategorias from "./components/ListaDeCategorias";
 
 class App extends Component {
 
   constructor(){
     super();
     this.state = {
-      notes: []
+      notes: [],
+      categories: []
     }
   }
 
@@ -30,11 +32,20 @@ class App extends Component {
    this.setState({notes:arrayNotes})
  }
 
+ addCategory(name) {
+   const newArrayCategories = [...this.state.categories, name]
+   const newState = {...this.state, categories: newArrayCategories}
+   this.setState(newState)
+ }
+
   render() {
     return (
       <section className="conteudo">
         <FormularioCadastro createNote={this.createNote.bind(this)}/>
+        <main className="conteudo-principal">
+        <ListaDeCategorias categories={this.state.categories} addCategory={this.addCategory.bind(this)} />
         <ListaDeNotas className="anime-left" notes={this.state.notes} removeNote={this.deleteNote.bind(this)}/>
+        </main>
       </section>
     );
   }

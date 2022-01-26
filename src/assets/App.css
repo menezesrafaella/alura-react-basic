@@ -22,3 +22,7 @@
       transform: initial;
     }
   }
+
+  .conteudo-principal {
+    flex-grow: 3;
+  }
