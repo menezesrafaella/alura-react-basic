@@ -41,7 +41,7 @@ class App extends Component {
   render() {
     return (
       <section className="conteudo">
-        <FormularioCadastro createNote={this.createNote.bind(this)}/>
+        <FormularioCadastro categories={this.state.categories} createNote={this.createNote.bind(this)}/>
         <main className="conteudo-principal">
         <ListaDeCategorias categories={this.state.categories} addCategory={this.addCategory.bind(this)} />
         <ListaDeNotas className="anime-left" notes={this.state.notes} removeNote={this.deleteNote.bind(this)}/>
