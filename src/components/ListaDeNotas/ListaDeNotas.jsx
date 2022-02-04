@@ -11,7 +11,7 @@ class ListaDeNotas extends Component {
         {this.props.notes.map((note, index) => {
           return (
             <li className="lista-notas_item" key={index}>
-              <CardNota removeNote={this.props.removeNote} title={note.title} text={note.text} index={index}/>
+              <CardNota removeNote={this.props.removeNote} category={note.category} title={note.title} text={note.text} index={index}/>
             </li>
           );
         })}

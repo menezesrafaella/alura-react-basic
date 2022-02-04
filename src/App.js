@@ -6,45 +6,44 @@ import ListaDeNotas from "./components/ListaDeNotas/ListaDeNotas";
 import "./assets/App.css";
 import './assets/reset.css';
 import ListaDeCategorias from "./components/ListaDeCategorias";
+import Categories from "./Data/Categories";
+import ArrayNotes from "./Data/Notes";
 
 class App extends Component {
 
   constructor(){
     super();
-    this.state = {
-      notes: [],
-      categories: []
-    }
+    // this.state = {
+    //   notes: [],
+    //   categories: []
+    // }
+
+    this.categories = new Categories();
+    this.notes = new ArrayNotes()
   }
 
-  createNote(title,text){ 
-    const newNote = {title, text}
-    const newArrayNotes = [...this.state.notes, newNote]
-    const newState = {
-      notes: newArrayNotes
-    }
-    this.setState(newState)
- }
+//   createNote(title,text, category){ 
+//     const newNote = {title, text, category}
+//     const newArrayNotes = [...this.state.notes, newNote]
+//     const newState = {
+//       notes: newArrayNotes
+//     }
+//     this.setState(newState)
+//  }
 
- deleteNote(index) {
-   let arrayNotes = this.state.notes;
-   arrayNotes.splice(index, 1)
-   this.setState({notes:arrayNotes})
- }
-
- addCategory(name) {
-   const newArrayCategories = [...this.state.categories, name]
-   const newState = {...this.state, categories: newArrayCategories}
-   this.setState(newState)
- }
+//  deleteNote(index) {
+//    let arrayNotes = this.state.notes;
+//    arrayNotes.splice(index, 1)
+//    this.setState({notes:arrayNotes})
+//  }
 
   render() {
     return (
       <section className="conteudo">
-        <FormularioCadastro categories={this.state.categories} createNote={this.createNote.bind(this)}/>
+        <FormularioCadastro categories={this.categorias.categories} createNote={this.notes.createNote}/>
         <main className="conteudo-principal">
-        <ListaDeCategorias categories={this.state.categories} addCategory={this.addCategory.bind(this)} />
-        <ListaDeNotas className="anime-left" notes={this.state.notes} removeNote={this.deleteNote.bind(this)}/>
+        <ListaDeCategorias categories={this.categorias.categories} addCategory={this.categories.addCategory} />
+        <ListaDeNotas className="anime-left" notes={this.notes.notes} removeNote={this.notes.deleteNote}/>
         </main>
       </section>
     );
