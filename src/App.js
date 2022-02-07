@@ -40,10 +40,10 @@ class App extends Component {
   render() {
     return (
       <section className="conteudo">
-        <FormularioCadastro categories={this.categorias.categories} createNote={this.notes.createNote}/>
+        <FormularioCadastro categories={this.categories} createNote={this.notes.createNote.bind(this.notes)}/>
         <main className="conteudo-principal">
-        <ListaDeCategorias categories={this.categorias.categories} addCategory={this.categories.addCategory} />
-        <ListaDeNotas className="anime-left" notes={this.notes.notes} removeNote={this.notes.deleteNote}/>
+        <ListaDeCategorias categories={this.categories} addCategory={this.categories.addCategory.bind(this.categories)} />
+        <ListaDeNotas className="anime-left" notes={this.notes} removeNote={this.notes.deleteNote.bind(this.notes)}/>
         </main>
       </section>
     );
